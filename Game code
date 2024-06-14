@@ -1,0 +1,113 @@
+import random
+
+logo = '''
+
+ __   __  ___   _______  __   __     _______  ______       ___      _______  _     _ 
+|  | |  ||   | |       ||  | |  |   |       ||    _ |     |   |    |       || | _ | |
+|  |_|  ||   | |    ___||  |_|  |   |   _   ||   | ||     |   |    |   _   || || || |
+|       ||   | |   | __ |       |   |  | |  ||   |_|| _   |   |    |  | |  ||       |
+|       ||   | |   ||  ||       |   |  |_|  ||    __  |   |   |___ |  |_|  ||       |
+|   _   ||   | |   |_| ||   _   |   |       ||   |  | |   |       ||       ||   _   |
+|__| |__||___| |_______||__| |__|   |_______||___|  |_|   |_______||_______||__| |__|
+
+
+'''
+
+print(logo)
+
+search_data = {
+    "Taylor Swift": 27000000,
+    "COVID-19": 18000000,
+    "Bitcoin": 16000000,
+    "Elon Musk": 12000000,
+    "NASA": 11000000,
+    "Cristiano Ronaldo": 10000000,
+    "Kim Kardashian": 9000000,
+    "Fortnite": 8500000,
+    "Tesla": 8000000,
+    "Game of Thrones": 7500000,
+    "The Simpsons": 7000000,
+    "YouTube": 6800000,
+    "Weather": 6700000,
+    "Facebook": 6600000,
+    "Instagram": 6500000,
+    "Donald Trump": 6000000,
+    "Harry Potter": 5800000,
+    "Amazon": 5700000,
+    "Lionel Messi": 5600000,
+    "Netflix": 5500000,
+    "Minecraft": 5400000,
+    "Star Wars": 5300000,
+    "Google Maps": 5200000,
+    "Bitcoin Price": 5100000,
+    "Bill Gates": 5000000,
+    "The Beatles": 4900000,
+    "World Cup": 4800000,
+    "TikTok": 4700000,
+    "Michael Jackson": 4600000,
+    "New York Times": 4500000,
+    "LinkedIn": 4400000,
+    "Weather Forecast": 4300000,
+    "Super Bowl": 4200000,
+    "Walmart": 4100000,
+    "Olympics": 4000000,
+    "Eminem": 3900000,
+    "Reddit": 3800000,
+    "Spotify": 3700000,
+    "Disney Plus": 3600000,
+    "YouTube Music": 3500000,
+    "Zoom": 3400000,
+    "Kanye West": 3300000,
+    "J.K. Rowling": 3200000,
+    "Ariana Grande": 3100000,
+    "Drake": 3000000,
+    "Joe Biden": 2900000,
+    "Super Mario": 2800000,
+    "Black Panther": 2700000,
+    "Spider-Man": 2600000,
+    "Tom Brady": 2500000
+}
+
+
+play = True
+
+while play:
+    score = 0
+    subject1 = random.choice(list(search_data.keys()))
+    subject1_value = search_data[subject1]
+
+    while True:
+        subject2 = random.choice(list(search_data.keys()))
+        while subject2 == subject1:
+            subject2 = random.choice(list(search_data.keys()))
+
+        subject2_value = search_data[subject2]
+
+        print(f"{subject1} has {subject1_value}k monthly searches\n"
+              f"vs\n"
+              f"{subject2}")
+
+        high_low = input(f"Does {subject2} have higher or lower searches? ").lower()
+
+        if (high_low == "lower" and subject2_value < subject1_value) or \
+                (high_low == "higher" and subject2_value > subject1_value):
+            print("✅ Correct!")
+            score += 1
+            subject1 = subject2
+            subject1_value = subject2_value
+            print(f"Your score: {score}")
+        else:
+            print("❌ Incorrect!")
+            print(f"Your final score: {score}")
+            break
+
+    play = input("Press 1 to Restart or 2 to Stop: ").lower()
+    if play == "2":
+        play = False
+    elif play != "1":
+        print("Invalid input. Stopping the game.")
+        play = False
+
+
+
+
